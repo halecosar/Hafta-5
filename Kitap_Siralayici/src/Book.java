@@ -1,6 +1,6 @@
 import java.util.TreeSet;
 
-public class Book implements Comparable <Book>{
+public class Book{
 
     private String bookName;
     private String authorName;
@@ -49,17 +49,6 @@ public class Book implements Comparable <Book>{
         this.publishYear = publishYear;
         this.pageNumber = pageNumber;
 
-    }
-
-    @Override
-    //compare to metodu yazıldı.
-    public int compareTo(Book o) {
-        if(this.pageNumber==o.pageNumber)
-            return 0;
-        else if(this.pageNumber<o.pageNumber)
-            return 1;
-        else
-            return -1;
     }
 }
 
