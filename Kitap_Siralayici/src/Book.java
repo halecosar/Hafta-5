@@ -1,6 +1,6 @@
 import java.util.TreeSet;
 
-public class Book{
+public class Book implements Comparable <Book>{
 
     private String bookName;
     private String authorName;
@@ -49,6 +49,11 @@ public class Book{
         this.publishYear = publishYear;
         this.pageNumber = pageNumber;
 
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return new String(this.getBookName()).compareTo(o.getBookName());
     }
 }
 
