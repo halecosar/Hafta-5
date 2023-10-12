@@ -47,10 +47,10 @@ public class PatikaStoreSystem {
                 patikaStore.listProducts(1);
                 break;
             case 2:
-
+                addNotebook();
                 break;
             case 3:
-
+                deleteProduct();
                 break;
             case 4:
                 break;
@@ -82,7 +82,7 @@ public class PatikaStoreSystem {
                 addPhone();
                 break;
             case 3:
-
+                deleteProduct();
                 break;
             case 4:
                 break;
@@ -133,6 +133,57 @@ public class PatikaStoreSystem {
         System.out.println("Ürün eklenmiştir önceki menüye yönlendiriliyorsunuz.");
         phone();
 
+    }
+
+    public void addNotebook() {
+        String brandName = "";
+
+        while (brandName == "") {
+            System.out.println("Ürün markasını seçiniz :");
+            patikaStore.listBrands();
+            int selectedBrand = scan.nextInt();
+            brandName = patikaStore.getBrandbyID(selectedBrand);
+        }
+
+
+        System.out.println("Ürün adını giriniz :");
+        String productName = scan.nextLine();
+        scan.nextLine();
+        System.out.println("Ürün fiyatını giriniz :");
+        String productPrice = scan.nextLine();
+        System.out.println("Ürünün indirim oranını giriniz :");
+        String productDis = scan.nextLine();
+        System.out.println("Ürün RAM'ini giriniz :");
+        String productRam = scan.nextLine();
+        System.out.println("Ürünün ekran boyutunu giriniz :");
+        String productSize = scan.nextLine();
+        System.out.println("Ürünün stok bilgisini giriniz :");
+        String productStok = scan.nextLine();
+        System.out.println("Ürünün rengini giriniz :");
+        String productStorage = scan.nextLine();
+
+
+        Notebook notebook = new Notebook(2, productName, productPrice, productDis, productRam, productSize, productStok, productStorage);
+        patikaStore.addProduct(brandName, notebook);
+        System.out.println("Ürün eklenmiştir önceki menüye yönlendiriliyorsunuz.");
+        noteBook();
+
+    }
+
+    public void deleteProduct() {
+        String brandName = "";
+
+        while (brandName == "") {
+            System.out.println("Ürün markasını seçiniz :");
+            patikaStore.listBrands();
+            int selectedBrand = scan.nextInt();
+            brandName = patikaStore.getBrandbyID(selectedBrand);
+        }
+
+
+        System.out.println("Silinecek ürünün ID'sini giriniz :");
+        int productId = scan.nextInt();
+        patikaStore.remove(brandName, productId);
     }
 
 }

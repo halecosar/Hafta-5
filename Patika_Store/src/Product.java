@@ -72,6 +72,7 @@ public class Product {
         this.stock = stock;
     }
 
+
     public Product(int productType, String productName, String price, String discountRate, String ram, String screenSize, String stock) {
         this.productType= productType;
         this.productName = productName;

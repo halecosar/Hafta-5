@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-public  class Brand implements Comparable <Brand>{
-private int id;
-private String name;
-private ArrayList<Product> products;
+public class Brand implements Comparable<Brand> {
+    private int id;
+    private String name;
+    private ArrayList<Product> products;
 
     public Brand(int id, String name) {
         this.id = id;
@@ -35,8 +35,11 @@ private ArrayList<Product> products;
         this.products = products;
     }
 
-    public void addProduct(Product product){
+    public void addProduct(Product product) {
         products.add(product);
+    }
+    public void removeProduct(int id) {
+        products.remove(id);
     }
 
     @Override

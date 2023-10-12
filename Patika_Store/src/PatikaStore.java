@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Scanner;
 import java.util.TreeSet;
-import java.util.*;
 
 public class PatikaStore {
     private BrandCrud brandCrud;
@@ -65,5 +63,9 @@ public class PatikaStore {
 
     }
 
+    public void remove(String brandName, int id) {
+        Brand brand = brandCrud.getBrand(brandName);
+        brand.removeProduct(id);
+    }
 
 }
