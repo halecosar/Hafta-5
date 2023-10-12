@@ -9,8 +9,8 @@ public class Notebook extends Product{
         this.storage = storage;
     }
 
-    public Notebook(int productType,int productId, String productName, String price, String discountRate, String ram, String screenSize, String stock, String storage) {
-        super(productType,productId, productName, price, discountRate, ram, screenSize, stock);
+    public Notebook(int productType, String productName, String price, String discountRate, String ram, String screenSize, String stock, String storage) {
+        super(productType, productName, price, discountRate, ram, screenSize, stock);
         this.storage=storage;
     }
 }

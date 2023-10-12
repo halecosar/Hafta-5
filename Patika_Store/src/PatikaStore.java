@@ -27,17 +27,25 @@ public class PatikaStore {
         System.out.println(" Markalar ");
         System.out.println("--------------");
         for (Brand brand : brands) {
-            System.out.println("- " + brand.getName());
+            System.out.println(brand.getId() + " - " + brand.getName());
         }
         System.out.println();
     }
 
-    private int lastID = 0;
+    public String getBrandbyID(int id) {
+        Brand brand = brandCrud.getBrandbyID(id);
+        if (brand != null) {
+            return brand.getName();
+        }
+        return "";
+    }
+
+    private int ID = 1;
 
     public void addProduct(String brandName, Product product) {
         Brand brand = brandCrud.getBrand(brandName);
         if (brand != null) {
-            product.setProductId(lastID++);
+            product.setProductId(ID++);
             brand.addProduct(product);
         }
     }
@@ -47,8 +55,11 @@ public class PatikaStore {
 
         for (Brand brand : brands) {
             for (Product product : brand.get_product()) {
-                if (product.getProductType() == productType)
-                    System.out.println(product.getProductName());
+                if (product.getProductType() == productType) {
+                    System.out.format("| " + String.valueOf(product.getProductId()) + " | ");
+                    System.out.format(product.getProductName() + " | ");
+
+                }
             }
         }
 

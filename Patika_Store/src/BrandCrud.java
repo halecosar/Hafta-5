@@ -18,13 +18,23 @@ public class BrandCrud {
         return this.brn;
     }
 
-    public Brand getBrand(String name){
-        for (Brand b : this.brn){
-            if (b.getName().equals(name)){
+    public Brand getBrand(String name) {
+        for (Brand b : this.brn) {
+            if (b.getName().equals(name)) {
                 return b;
             }
         }
 
-        return  null;
+        return null;
+    }
+
+    public Brand getBrandbyID(int id) {
+        for (Brand b : this.brn) {
+            if (b.getId() == id) {
+                return b;
+            }
+        }
+
+        return null;
     }
 }
