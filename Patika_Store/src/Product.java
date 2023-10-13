@@ -1,86 +1,110 @@
-public class Product {
-    private int productId;
-    private String productName;
-    private String price;
-    private String discountRate;
-    private String ram;
+import java.util.HashSet;
+import java.util.Scanner;
+
+public abstract class Product {
+    static HashSet<Brand> brands = new HashSet<>();
+    public Scanner scan = new Scanner(System.in);
+    private int id;
+    private String name;
+    private int price;
+    private int discountRate;
+    private int stock;
+    private Brand brand;
     private String screenSize;
-    private String stock;
-    private int productType;
+    private int ram;
+    private String memory;
 
-    public int getProductId() {
-        return productId;
+    public abstract void productMenu();
+
+    public abstract void addProduct();
+
+    public abstract void getProducts();
+
+    public abstract void deleteProduct();
+
+    public Product(int id, String name, int price, int discountRate, int stock,
+                   Brand brand, String screenSize, int ram, String memory) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.discountRate = discountRate;
+        this.stock = stock;
+        this.brand = brand;
+        this.screenSize = screenSize;
+        this.ram = ram;
+        this.memory = memory;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public Product() {
+
     }
 
-    public String getProductName() {
-        return productName;
+    public int getId() {
+        return id;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public String getName() {
+        return name;
     }
 
-    public String getPrice() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public String getDiscountRate() {
+    public int getDiscountRate() {
         return discountRate;
     }
 
-    public void setDiscountRate(String discountRate) {
+    public void setDiscountRate(int discountRate) {
         this.discountRate = discountRate;
     }
 
-    public String getRam() {
-        return ram;
+    public int getStock() {
+        return stock;
     }
 
-    public void setRam(String ram) {
-        this.ram = ram;
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public String getScreenSize() {
         return screenSize;
     }
 
-    public int getProductType() {
-        return productType;
-    }
-
-    public void setProductType(int productType) {
-        this.productType = productType;
-    }
-
     public void setScreenSize(String screenSize) {
         this.screenSize = screenSize;
     }
 
-    public String getStock() {
-        return stock;
+    public int getRam() {
+        return ram;
     }
 
-    public void setStock(String stock) {
-        this.stock = stock;
+    public void setRam(int ram) {
+        this.ram = ram;
     }
 
+    public String getMemory() {
+        return memory;
+    }
 
-    public Product(int productType, String productName, String price, String discountRate, String ram, String screenSize, String stock) {
-        this.productType= productType;
-        this.productName = productName;
-        this.price = price;
-        this.discountRate = discountRate;
-        this.ram=ram;
-        this.screenSize = screenSize;
-        this.stock = stock;
+    public void setMemory(String memory) {
+        this.memory = memory;
     }
 
 }

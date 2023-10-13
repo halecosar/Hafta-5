@@ -1,71 +1,36 @@
 import java.util.Scanner;
-import java.util.TreeSet;
 
 public class PatikaStore {
-    private BrandCrud brandCrud;
+    Scanner scanner = new Scanner(System.in);
 
-    public PatikaStore() {
-        brandCrud = new BrandCrud();
-    }
+    public void startShopping() {
+        while (true) {
+            System.out.println("PatikaStore Ürün Yönetim Paneli !");
+            System.out.println(" 1 - Notebook İşlemleri\n" +
+                    " 2 - Cep Telefonu İşlemleri\n" +
+                    " 3 - Marka Listele\n" +
+                    " 0 - Çıkış Yap");
+            System.out.print("Yapmak istediğiniz işlemi seçiniz : ");
 
-    public BrandCrud getBrandCrud() {
-        return brandCrud;
-    }
-
-    public void setBrandCrud(BrandCrud brandCrud) {
-        this.brandCrud = brandCrud;
-    }
-
-    public void addBrand(String brandName) {
-        brandCrud.addBrand(brandName);
-    }
-
-    public void listBrands() {
-        TreeSet<Brand> brands = brandCrud.getBrandlist();
-        System.out.println(" Markalar ");
-        System.out.println("--------------");
-        for (Brand brand : brands) {
-            System.out.println(brand.getId() + " - " + brand.getName());
-        }
-        System.out.println();
-    }
-
-    public String getBrandbyID(int id) {
-        Brand brand = brandCrud.getBrandbyID(id);
-        if (brand != null) {
-            return brand.getName();
-        }
-        return "";
-    }
-
-    private int ID = 1;
-
-    public void addProduct(String brandName, Product product) {
-        Brand brand = brandCrud.getBrand(brandName);
-        if (brand != null) {
-            product.setProductId(ID++);
-            brand.addProduct(product);
-        }
-    }
-
-    public void listProducts(int productType) {
-        TreeSet<Brand> brands = brandCrud.getBrandlist();
-
-        for (Brand brand : brands) {
-            for (Product product : brand.get_product()) {
-                if (product.getProductType() == productType) {
-                    System.out.format("| " + String.valueOf(product.getProductId()) + " | ");
-                    System.out.format(product.getProductName() + " | ");
-
-                }
+            switch (scanner.nextInt()) {
+                case 1:
+                    Notebook notebook = new Notebook();
+                    notebook.productMenu();
+                    break;
+                case 2:
+                    Phone phone = new Phone();
+                    phone.productMenu();
+                    break;
+                case 3:
+                    Brand.printBrands();
+                    break;
+                case 0:
+                    System.out.println("Çıkış Yapıldı.");
+                    return;
+                default:
+                    System.out.println("Hatalı değer girdiniz.");
+                    break;
             }
         }
-
     }
-
-    public void remove(String brandName, int id) {
-        Brand brand = brandCrud.getBrand(brandName);
-        brand.removeProduct(id);
-    }
-
 }
