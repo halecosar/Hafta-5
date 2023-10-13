@@ -26,7 +26,8 @@ public class Phone extends Product {
                 "1 - Telefon Listeleme\n" +
                 "2 - Telefon ekleme\n" +
                 "3 - Telefon Silme \n" +
-                "4 - Telefon Filtreleme \n" +
+                "4 - Telefonları  ID'ye göre filtrele \n" +
+                "5 - Telefonları  markaya göre filtrele \n" +
                 "0 - Ana menüye dön");
 
         int select = scan.nextInt();
@@ -41,7 +42,10 @@ public class Phone extends Product {
                 deleteProduct();
                 break;
             case 4:
-                brandFilter();
+                brandFilterbyID();
+                break;
+            case 5:
+                brandFilterbyBrand();
                 break;
             case 0:
                 productMenu();
@@ -155,17 +159,16 @@ public class Phone extends Product {
     @Override
     public void deleteProduct() {
         System.out.println("Silmek istediğiniz telefon ID'sini yazınız :");
-        int selectedID=scan.nextInt();
+        int selectedID = scan.nextInt();
         Phone deletedPhone = null;
         for (Phone phone : phones) {
             if (phone.getId() == selectedID) {
                 deletedPhone = phone;
             }
         }
-        if (deletedPhone==null){
+        if (deletedPhone == null) {
             System.out.println("Geçersiz Telefon ID");
-        }
-        else{
+        } else {
             phones.remove(deletedPhone);
             System.out.print("Telefon listeden silinmiştir. Lütfen kontrol ediniz.");
             print(phones);
@@ -173,9 +176,41 @@ public class Phone extends Product {
 
     }
 
-    public void brandFilter() {
 
+    private void brandFilterbyID() {
+        print(phones);
+        System.out.println("Filtrelemek istediğiniz telefon ID'sini yazınız :");
+        int filteredID = scan.nextInt();
+        ArrayList<Phone> filteredPhones = new ArrayList<>();
+
+        for (Phone phone : phones) {
+            if (phone.getId() == filteredID) {
+                filteredPhones.add(phone);
+            }
+        }
+
+        print(filteredPhones);
     }
+    private void brandFilterbyBrand() {
+        print(phones);
+        Brand.printBrands();
+        int filteredBrands=0;
+        while (filteredBrands <= 9 && filteredBrands>0) {
+            System.out.println("Filtrelemek istediğiniz telefon markasını seçiniz :");
+
+            filteredBrands = scan.nextInt();
+            ArrayList<Phone> filteredPhones = new ArrayList<>();
+
+            for (Phone phone : phones) {
+                if (phone.getBrand().getId() == filteredBrands) {
+                    filteredPhones.add(phone);
+                }
+            }
+
+            print(filteredPhones);
+        }
+    }
+
 
     public int getBattery() {
         return battery;

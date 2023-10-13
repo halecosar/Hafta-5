@@ -7,7 +7,7 @@ public class PatikaStore {
         while (true) {
             System.out.println("PatikaStore Ürün Yönetim Paneli !");
             System.out.println(" 1 - Notebook İşlemleri\n" +
-                    " 2 - Cep Telefonu İşlemleri\n" +
+                    " 2 - Telefon İşlemleri\n" +
                     " 3 - Marka Listele\n" +
                     " 0 - Çıkış Yap");
             System.out.print("Yapmak istediğiniz işlemi seçiniz : ");

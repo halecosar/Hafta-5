@@ -22,7 +22,8 @@ public class Notebook extends Product {
         System.out.println("1- Notebook listesini görüntüle\n" +
                 "2- Yeni Notebook ekle \n" +
                 "3- Notebook sil\n" +
-                "4- Notebookları markaya göre filtrele");
+                "4- Notebookları ID'ye göre filtrele\n" +
+                "5-Notebookları markaya göre filtrele");
         System.out.print("Yapmak istediğiniz işlemi seçiniz : ");
         int select = scan.nextInt();
         switch (select) {
@@ -36,7 +37,10 @@ public class Notebook extends Product {
                 deleteProduct();
                 break;
             case 4:
-                brandFilter();
+                brandFilterbyID();
+                break;
+            case 5:
+                brandFilterbyBrand();
                 break;
             case 0:
                 productMenu();
@@ -118,7 +122,38 @@ public class Notebook extends Product {
         }
     }
 
-    private void brandFilter() {
+    private void brandFilterbyID() {
+        print(notebooks);
+        System.out.println("Filtrelemek istediğiniz notebook ID'sini yazınız :");
+        int filteredID = scan.nextInt();
+        ArrayList<Notebook> filteredNotebooks = new ArrayList<>();
 
+        for (Notebook notebook : notebooks) {
+            if (notebook.getId() == filteredID) {
+                filteredNotebooks.add(notebook);
+            }
+        }
+
+        print(filteredNotebooks);
+    }
+
+    private void brandFilterbyBrand() {
+        print(notebooks);
+        Brand.printBrands();
+        int filteredBrands=0;
+        while (filteredBrands <= 9 && filteredBrands>0) {
+            System.out.println("Filtrelemek istediğiniz notebook markasını seçiniz :");
+
+            filteredBrands = scan.nextInt();
+            ArrayList<Notebook> filteredNotebooks = new ArrayList<>();
+
+            for (Notebook notebook : notebooks) {
+                if (notebook.getBrand().getId() == filteredBrands) {
+                    filteredNotebooks.add(notebook);
+                }
+            }
+
+            print(filteredNotebooks);
+        }
     }
 }
