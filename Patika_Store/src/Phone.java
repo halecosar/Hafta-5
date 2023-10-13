@@ -5,7 +5,7 @@ public class Phone extends Product {
     private static int id = 1;
     private int battery;
     private String color;
-    private static ArrayList<Phone> phones = new ArrayList<>();
+    private static ArrayList<Phone> phones = new ArrayList<>(); //Telefonların olacağı bir arraylist tanımlandı.
 
     public Phone(String name, int price, int discountRate, int stock,
                  Brand brand, String screenSize, int ram, String memory,
@@ -27,8 +27,7 @@ public class Phone extends Product {
                 "2 - Telefon ekleme\n" +
                 "3 - Telefon Silme \n" +
                 "4 - Telefonları  ID'ye göre filtrele \n" +
-                "5 - Telefonları  markaya göre filtrele \n" +
-                "0 - Ana menüye dön");
+                "5 - Telefonları  markaya göre filtrele");
 
         int select = scan.nextInt();
         switch (select) {
@@ -47,10 +46,8 @@ public class Phone extends Product {
             case 5:
                 brandFilterbyBrand();
                 break;
-            case 0:
-                productMenu();
-                break;
             default:
+                System.out.println("Hatalı giriş yaptınız, lütfen tekrar giriniz.");
                 productMenu();
 
         }
@@ -63,21 +60,18 @@ public class Phone extends Product {
         System.out.print("Ürün adını giriniz : ");
         scan.nextLine();
         String name = scan.nextLine();
-
         System.out.print("Ürün fiyatını giriniz :");
         int price = scan.nextInt();
-
-
         System.out.print("Ürünün indirim oranını giriniz : ");
         int discountRate = scan.nextInt();
         System.out.print("Ürünün stok bilgisini giriniz :");
         int stock = scan.nextInt();
 
-        int ram = 6;
-
+        int ram = 6; //soruda sabit verilen değerler kullanıcıdan istenmedi.
         String screenSize = "6.1 INC";
-
         String memoryName = "";
+        int battery = 4000;
+
         while (memoryName == "") {
             System.out.println("Ürünün hafızasını seçiniz : \n" +
                     "1-128 GB \n" +
@@ -96,7 +90,7 @@ public class Phone extends Product {
 
         }
 
-        int battery = 4000;
+
 
         String productColor = "";
         while (productColor == "") {
@@ -133,7 +127,7 @@ public class Phone extends Product {
             }
         }
 
-        //Ürün oluşturuldu.
+
         Phone phone = new Phone(name, price, discountRate, stock, brand, screenSize, ram, memoryName, battery, productColor);
         phones.add(phone);
 
@@ -177,7 +171,7 @@ public class Phone extends Product {
     }
 
 
-    private void brandFilterbyID() {
+    private void brandFilterbyID() { //filtreleme için marka ve id'ye yönelik  2 ayrı metod yazıldı.
         print(phones);
         System.out.println("Filtrelemek istediğiniz telefon ID'sini yazınız :");
         int filteredID = scan.nextInt();
@@ -191,23 +185,28 @@ public class Phone extends Product {
 
         print(filteredPhones);
     }
+
     private void brandFilterbyBrand() {
-        print(phones);
         Brand.printBrands();
-        int filteredBrands=0;
-        while (filteredBrands <= 9 && filteredBrands>0) {
+        boolean check = true;
+
+        while (check == true) {
             System.out.println("Filtrelemek istediğiniz telefon markasını seçiniz :");
 
-            filteredBrands = scan.nextInt();
-            ArrayList<Phone> filteredPhones = new ArrayList<>();
+            int filteredBrands = scan.nextInt();
+            if (filteredBrands > 0 && filteredBrands < 10) {
+                check = false;
+                ArrayList<Phone> filteredPhones = new ArrayList<>();
 
-            for (Phone phone : phones) {
-                if (phone.getBrand().getId() == filteredBrands) {
-                    filteredPhones.add(phone);
+                for (Phone phone : phones) {
+                    if (phone.getBrand().getId() == filteredBrands) {
+                        filteredPhones.add(phone);
+                    }
                 }
+
+                print(filteredPhones);
             }
 
-            print(filteredPhones);
         }
     }
 

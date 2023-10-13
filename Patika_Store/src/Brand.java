@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Brand implements Comparable<Brand> {
+public class Brand implements Comparable<Brand> { //markaları alfabetik sıralamak için comparable interface'i impelemt edildi. CompareTo metodu yazıldı
     private int id;
     private String name;
     private static TreeSet<Brand> brands = new TreeSet<>();
