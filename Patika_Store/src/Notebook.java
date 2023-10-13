@@ -27,10 +27,10 @@ public class Notebook extends Product {
         int select = scan.nextInt();
         switch (select) {
             case 1:
-                addProduct();
+                getProducts();
                 break;
             case 2:
-                getProducts();
+                addProduct();
                 break;
             case 3:
                 deleteProduct();
@@ -49,8 +49,8 @@ public class Notebook extends Product {
     @Override
     public void addProduct() {
         System.out.print("Ürünün adını giriniz : ");
-        String name = scan.nextLine();
         scan.nextLine();
+        String name = scan.nextLine();
         System.out.print("Ürünün stok bilgisini giriniz : ");
         int stock = scan.nextInt();
         System.out.print("Ürünün indirim oranını giriniz: ");
@@ -75,9 +75,9 @@ public class Notebook extends Product {
             }
         }
 
-        Notebook notebook = new Notebook(name, price, discountRate, stock, brand, screenSize, ram, memory); //ürün oluşturuldu.
-        this.notebooks.add(notebook);       //id verildi ve listeye eklendi.
-        System.out.println("Eklenen Notebook'un ID'si :" + notebook.getId());
+        Notebook notebook = new Notebook(name, price, discountRate, stock, brand, screenSize, ram, memory);
+        this.notebooks.add(notebook);
+
     }
 
     @Override
@@ -92,10 +92,10 @@ public class Notebook extends Product {
         System.out.println("| ID | Ürün Adı                  | Fiyatı          | Markası         | Stoğu        | İndirim Oranı      | RAM    | Ekran Boyutu      | Hafızası   |");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
 
-        for (Notebook n : notebookList) {
+        for (Notebook notebook : notebookList) {
             System.out.printf("| %-2s | %-25s | %-15s | %-15s | %-12s | %-18s | %-6s | %-17s | %-10s | \n",
-                    n.getId(), n.getName(), n.getPrice(), n.getBrand().getName(), n.getStock(),
-                    n.getDiscountRate(), n.getRam(), n.getScreenSize(), n.getMemory());
+                    notebook.getId(), notebook.getName(), notebook.getPrice(), notebook.getBrand().getName(), notebook.getStock(),
+                    notebook.getDiscountRate(), notebook.getRam(), notebook.getScreenSize(), notebook.getMemory());
         }
     }
 

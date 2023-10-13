@@ -57,8 +57,9 @@ public class Phone extends Product {
     @Override
     public void addProduct() {
         System.out.print("Ürün adını giriniz : ");
-        String name = scan.nextLine();
         scan.nextLine();
+        String name = scan.nextLine();
+
         System.out.print("Ürün fiyatını giriniz :");
         int price = scan.nextInt();
 
@@ -74,9 +75,9 @@ public class Phone extends Product {
 
         String memoryName = "";
         while (memoryName == "") {
-            System.out.print("Ürünün hafızasını seçiniz :" +
-                    "1- 128 GB  \n " +
-                    "2- 64 GB");
+            System.out.println("Ürünün hafızasını seçiniz : \n" +
+                    "1-128 GB \n"+
+                    "2-64 GB");
             int memory = scan.nextInt();
             switch (memory) {
                 case 1:
@@ -95,10 +96,10 @@ public class Phone extends Product {
 
         String productColor = "";
         while (productColor == "") {
-            System.out.println("Ürünün rengini seçiniz:" +
-                    " 1- Kırmızı \n " +
-                    " 2- Siyah \n " +
-                    " 3- Mavi : ");
+            System.out.println("Ürünün rengini seçiniz:\n" +
+                    " 1- Kırmızı \n"+
+                    " 2- Siyah \n"+
+                    " 3- Mavi");
             int selectColor = scan.nextInt();
             switch (selectColor) {
                 case 1:
@@ -130,8 +131,8 @@ public class Phone extends Product {
 
         //Ürün oluşturuldu.
         Phone phone = new Phone(name, price, discountRate, stock, brand, screenSize, ram, memoryName, battery, productColor);
-        phones.add(phone);      //id verildi ve listeye eklendi
-        System.out.println("Eklenen telefonun id'si :" + phone.getId());
+        phones.add(phone);
+
     }
 
     public void getProducts() {
