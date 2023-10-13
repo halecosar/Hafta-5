@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Optional;
-
+// default değer girmedim, kendi ekleyeceğiniz ürünlerle consoldan testini gerçekleştirebilirisiniz.
 public class Notebook extends Product {
     private static int id = 1;
     private static ArrayList<Notebook> notebooks = new ArrayList<>();

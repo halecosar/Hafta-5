@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Optional;
-
+// default değer girmedim, kendi ekleyeceğiniz ürünlerle consoldan testini gerçekleştirebilirisiniz.
 public class Phone extends Product {
     private static int id = 1;
     private int battery;

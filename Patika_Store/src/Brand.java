@@ -1,5 +1,5 @@
 import java.util.*;
-
+// default değer girmedim, kendi ekleyeceğiniz ürünlerle consoldan testini gerçekleştirebilirisiniz.
 public class Brand implements Comparable<Brand> { //markaları alfabetik sıralamak için comparable interface'i impelemt edildi. CompareTo metodu yazıldı
     private int id;
     private String name;
