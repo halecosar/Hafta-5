@@ -76,7 +76,7 @@ public class Phone extends Product {
         String memoryName = "";
         while (memoryName == "") {
             System.out.println("Ürünün hafızasını seçiniz : \n" +
-                    "1-128 GB \n"+
+                    "1-128 GB \n" +
                     "2-64 GB");
             int memory = scan.nextInt();
             switch (memory) {
@@ -97,8 +97,8 @@ public class Phone extends Product {
         String productColor = "";
         while (productColor == "") {
             System.out.println("Ürünün rengini seçiniz:\n" +
-                    " 1- Kırmızı \n"+
-                    " 2- Siyah \n"+
+                    " 1- Kırmızı \n" +
+                    " 2- Siyah \n" +
                     " 3- Mavi");
             int selectColor = scan.nextInt();
             switch (selectColor) {
@@ -154,6 +154,22 @@ public class Phone extends Product {
 
     @Override
     public void deleteProduct() {
+        System.out.println("Silmek istediğiniz telefon ID'sini yazınız :");
+        int selectedID=scan.nextInt();
+        Phone deletedPhone = null;
+        for (Phone phone : phones) {
+            if (phone.getId() == selectedID) {
+                deletedPhone = phone;
+            }
+        }
+        if (deletedPhone==null){
+            System.out.println("Geçersiz Telefon ID");
+        }
+        else{
+            phones.remove(deletedPhone);
+            System.out.print("Telefon listeden silinmiştir. Lütfen kontrol ediniz.");
+            print(phones);
+        }
 
     }
 

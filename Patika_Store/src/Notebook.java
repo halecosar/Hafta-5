@@ -101,7 +101,21 @@ public class Notebook extends Product {
 
     @Override
     public void deleteProduct() {
-
+        System.out.println("Silmek istediğiniz notebook ID'sini yazınız :");
+        int selectedID = scan.nextInt();
+        Notebook deletedNotebook = null;
+        for (Notebook notebook : notebooks) {
+            if (notebook.getId() == selectedID) {
+                deletedNotebook = notebook;
+            }
+        }
+        if (deletedNotebook == null) {
+            System.out.println("Geçersiz notebook ID");
+        } else {
+            notebooks.remove(deletedNotebook);
+            System.out.print("Notebook listeden silinmiştir. Lütfen kontrol ediniz.");
+            print(notebooks);
+        }
     }
 
     private void brandFilter() {
