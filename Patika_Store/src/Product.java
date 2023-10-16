@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public abstract class Product {
-    static HashSet<Brand> brands = new HashSet<>(); //marka listesi için HashSet yapıldı.
+
     public Scanner scan = new Scanner(System.in);
     private int id;
     private String name;
